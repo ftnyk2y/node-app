@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <title>簡易メッセージボード</title>
+  <script>
+    //ページ読み込み時に呼ばれる関数
+    function init() {
+      //事前にidがセットされていれば
+      let id = localStorage.getItem('id');
+      //idがセットされていなかったら
+      if (id == '') {
+        location.href = 'login';
+      }
+      document.querySelector('#id').textContent = 'ID: ' + id;
+      document.querySelector('#id_input').value = id;
+    }
+  </script>
+</head>
+
+<body onload='init();'>
+  <header>
+    <h1>簡易メッセージボード</h1>
+  </header>
+  <div role='main'>
+    <p>メッセージの保存可能数は20個までです。</p>
+    <form method='post' action='/'>
+      <!--idを表示-->
+      <p id='id'></p>
+      <!--非表示だが、idがサーバに送られる-->
+      <input type='hidden' id='id_input' name='id'>
+      <div>
+        <label for='msg'>メッセージ</label>
+        <input type='text' name='msg' id='msg'>
+      </div>
+      <input type='submit' value='送信'>
+    </form>
+
+    <table class='table'>
+      <% for(let i in data) { %>
+      <%- include('data_item',{val:data[i]}) %>
+      <% } %>
+    </table>
+  </div><!--main-->
+</body>
+
+</html>

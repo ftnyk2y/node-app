@@ -1,0 +1,18 @@
+{"id":"abc","msg":"ただいま","strNow":"20/12/03 19:08 43"}
+{"id":"abc","msg":"こんにちは","strNow":"20/12/03 19:03 00"}
+{"id":"abc","msg":"ee","strNow":"20/12/03 19:02 48"}
+{"id":"abc","msg":"da","strNow":"20/12/03 19:02 43"}
+{"id":"abc","msg":"da","strNow":"20/12/03 19:02 39"}
+{"id":"abc","msg":"da","strNow":"20/12/03 18:50 43"}
+{"id":"abc","msg":"da","strNow":"20/12/03 18:48 13"}
+{"id":"abc","msg":"d","strNow":"20/12/03 18:48 13"}
+{"id":"abc","msg":"d","strNow":"20/12/03 18:44 24"}
+{"id":"abc","msg":"e","strNow":"20/12/03 18:44 24"}
+{"id":"abc","msg":"da","strNow":"20/12/03 18:44 24"}
+{"id":"abc","msg":"fs","strNow":"20/12/03 18:44 24"}
+{"id":"abc","msg":"fs"}
+{"id":"abc","msg":"fs"}
+{"id":"abc","msg":"fs"}
+{"id":"abc","msg":"da"}
+{"id":"abc","msg":"da"}
+{"id":"abc","msg":"d"}

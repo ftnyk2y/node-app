@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <title>サンプル</title>
+</head>
+
+  <body>
+    <script>
+      //***カレンダーを関数化する***
+    
+      function calendar(offset) {
+        //今日の日付
+        let date = new Date();
+        //曜日テーブル
+        let weekTable = new Array('日','月','火','水','木','金','土');
+        //月末のリスト
+        let endOfMonth = new Array(31,28,31,30,31,30,31,31,30,31,30,31)
+        //今日の'日'を取得
+        let today = date.getDate();
+        //今日の'月'を取得
+        let month = date.getMonth();
+        //日付を1日にセット
+        date.setDate(1);
+        //引数offsetに従って月を変更
+        month = month + offset;
+        //月を変更してセット
+        date.setMonth(month);
+        //年を取得
+        let year = date.getFullYear();
+        //月を取得
+        month = date.getMonth();
+        //1日の曜日を取得
+        let day1 = date.getDay();
+        //うるう年のときは2月は29日が月末
+        if (((year % 4) === 0 && (year % 100) !== 0) || (year % 400) === 0) {
+          endOfMonth[1] = 29;
+        }
+        //カレンダーのセルを用意
+        let table = new Array(7*6);
+        //カレンダーのセルを空白としておく
+        for (let i = 0; i < 7*6; i++) {
+          table[i] = ' ';
+        }
+        //カレンダーのセルを日付で埋める
+        for (let i = 0; i < endOfMonth[month]; i++) {
+          table[i + day1] = i + 1;
+        }
+    
+        //***カレンダーの表示***
+    
+        //表を書き出す
+        document.write('<table border="1">');
+        document.write('<tr><td align="center" colspan="7">');
+        document.write('<strong>',year,'年',(month+1),'月</strong>');
+        document.write('</td></tr>');
+    
+        //曜日(日~月)を書き出す
+        document.write('<tr>');
+        for (let i = 0; i < 7; i++) {
+          document.write('<td align="center">');
+          document.write('<strong>',weekTable[i],'</strong>');
+          document.write('</td>');
+        }
+        document.write('</tr>');
+    
+        //カレンダーの行(外ループ)と列(内ループ)を作る
+        for (let i = 0; i < 6; i++) {
+          document.write('<tr>');
+          for (let j = 0; j < 7; j++) {
+            document.write('<td align="center"');
+            //現在扱っているセル
+            let currentCell = table[(i*7) + j];
+            //現在扱っているセルが今日だったら背景をグレーに
+            if (currentCell === today && offset === 0) {
+              document.write('bgcolor="gray">');
+            } else {
+              document.write('bgcolor="white">');
+            }
+            //日付をセット
+            document.write(currentCell);
+            document.write('</td>')
+          }
+          document.write('</tr>');
+        }
+        document.write('</table>');
+      }
+    </script>
+    
+    <table><tr><td>
+    <script>
+      calendar(-1);
+    </script>
+    </td><td>
+    <script>
+      calendar(0);
+    </script>
+    </td><td>
+    <script>
+      calendar(1);
+    </script>
+    </td></tr></table>
+  </body>
+</html>
